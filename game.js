@@ -8,7 +8,7 @@ let roundNumber = 1;
 
 
 
-function userInstructions(){
+function explainUserInstructions(){
     alert('You are about to play 5 rounds of Rock Paper Scissors');
     alert('Please open your console to check the output'); 
     alert('Press F12 -> console tab in your browser to open your console'); 
@@ -33,7 +33,7 @@ function getComputerChoice(){
     }
 }
 
-function gameRound(playerSelection,computerSelection){
+function playGameRound(playerSelection,computerSelection){
     //Game logic
     if (playerSelection === computerSelection){
         console.log(`It's a tie`);
@@ -84,49 +84,49 @@ function validatePlayer(){
     }
 }
 
-function game(){
+function playGame(){
     //Instructions for the user
-    userInstructions();
+    explainUserInstructions();
 
     //Round 1
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
-    gameRound(playerSelection,computerSelection);
+    playGameRound(playerSelection,computerSelection);
     console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
     roundNumber += 1
     
     //Round 2
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
-    gameRound(playerSelection,computerSelection);
+    playGameRound(playerSelection,computerSelection);
     console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
     roundNumber += 1
     
     //Round 3
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
-    gameRound(playerSelection,computerSelection);
+    playGameRound(playerSelection,computerSelection);
     console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
     roundNumber += 1
     
     //Round 4
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
-    gameRound(playerSelection,computerSelection);
+    playGameRound(playerSelection,computerSelection);
     console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
     roundNumber += 1
     
     //Round 5
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
-    gameRound(playerSelection,computerSelection);
+    playGameRound(playerSelection,computerSelection);
     console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
 
 
-    finalScore();
+    getFinalScore();
 }
 
-function finalScore(){
+function getFinalScore(){
     if (playerScore > computerScore){
         console.info(`YOU WIN!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
     } else if (computerScore > playerScore){
@@ -142,4 +142,4 @@ function finalScore(){
 
 
 //Play the game (5 rounds)
-game();
+playGame();
