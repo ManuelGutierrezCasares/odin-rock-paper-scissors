@@ -1,13 +1,18 @@
-
-
 //Setting computer and player selection
 let player, playerSelection, computerSelection;
 //Setting scores
 let playerScore = 0;
 let computerScore = 0;
+let roundNumber = 1;
 
 
 
+
+function userInstructions(){
+    alert('You are about to play 5 rounds of Rock Paper Scissors');
+    alert('Please open your console to check the output'); 
+    alert('Press F12 -> console tab in your browser to open your console'); 
+}
 
 
 function getComputerChoice(){
@@ -56,7 +61,7 @@ function gameRound(playerSelection,computerSelection){
 function validatePlayer(){
     //looping to validate the null, undefined or wrong values
     while(true){
-        player = prompt(`Enter your choice: Rock, Paper or Scissors`);
+        player = prompt(`ROUND: ${roundNumber} Enter your choice: Rock, Paper or Scissors`);
         playerSelection = player === null ? '' : player;
         switch (playerSelection.toLowerCase()){
             case 'rock':
@@ -80,36 +85,42 @@ function validatePlayer(){
 }
 
 function game(){
+    //Instructions for the user
+    userInstructions();
 
     //Round 1
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
     gameRound(playerSelection,computerSelection);
-    console.log(`The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    roundNumber += 1
     
     //Round 2
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
     gameRound(playerSelection,computerSelection);
-    console.log(`The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    roundNumber += 1
     
     //Round 3
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
     gameRound(playerSelection,computerSelection);
-    console.log(`The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    roundNumber += 1
     
     //Round 4
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
     gameRound(playerSelection,computerSelection);
-    console.log(`The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    roundNumber += 1
     
     //Round 5
     playerSelection = validatePlayer();
     computerSelection = getComputerChoice();
     gameRound(playerSelection,computerSelection);
-    console.log(`The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
+    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
 
 
     finalScore();
@@ -129,8 +140,6 @@ function finalScore(){
 
 
 
-//console.log(gameRound('rock','paper'));
 
-//First round
-//gameRound(playerSelection,computerSelection);
+//Play the game (5 rounds)
 game();
