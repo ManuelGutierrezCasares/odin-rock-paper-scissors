@@ -7,15 +7,6 @@ let roundNumber = 1;
 let roundsQuantity = 5;
 
 
-
-
-function explainUserInstructions(){
-    alert('You are about to play 5 rounds of Rock Paper Scissors');
-    alert('Please open your console to check the output'); 
-    alert('Press F12 -> console tab in your browser to open your console'); 
-}
-
-
 function getComputerChoice(){
     //getting a random number between 1 and 3 to choose
     let choice = Math.floor(Math.random()*3)+1;
@@ -146,17 +137,4 @@ function getFinalScore(){
     console.clear();
 }
 
-
-
-
-
-
-//Play the game (5 rounds)
-//playGame();
-
-//Instructions for the user
-explainUserInstructions();
 playRoundButton();
-
-
-
