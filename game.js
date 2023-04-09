@@ -4,6 +4,7 @@ let player, playerSelection, computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 1;
+let roundsQuantity = 5;
 
 
 
@@ -33,7 +34,7 @@ function getComputerChoice(){
     }
 }
 
-function playGameRound(playerSelection,computerSelection){
+function getWinner(playerSelection,computerSelection){
     //Game logic
     if (playerSelection === computerSelection){
         console.log(`It's a tie`);
@@ -58,82 +59,91 @@ function playGameRound(playerSelection,computerSelection){
     }else {console.log(`ERROR: ` + playerSelection + ` or ` + computerSelection + ` does not exists.`)}
 }
 
-function validatePlayer(){
-    //looping to validate the null, undefined or wrong values
-    while(true){
-        player = prompt(`ROUND: ${roundNumber} Enter your choice: Rock, Paper or Scissors`);
-        playerSelection = player === null ? '' : player;
-        switch (playerSelection.toLowerCase()){
-            case 'rock':
-                return playerSelection.toLowerCase();
-                break;
-            case 'paper':
-                return playerSelection.toLowerCase();
-                break;
-            case 'scissors':
-                return playerSelection.toLowerCase();
-                break;
-            case null:
-            case '':
-            case undefined:
-                console.log(`An empty or null value is not supported, please enter a valid value`);
-                break;
-            default:
-                console.log(`${player} is not a valid value, please select either Rock, Paper or Scissors to play`); 
+function playRoundButton(){
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+    const output = document.querySelector('#output');
+
+    rock.addEventListener('click',getPlayerChoiceRock);
+    paper.addEventListener('click',getPlayerChoicePaper);
+    scissors.addEventListener('click',getPlayerChoiceScissors);
+
+    function getPlayerChoiceRock(e){
+        playerSelection = e.target.id;
+        computerSelection = getComputerChoice();
+        getWinner(playerSelection,computerSelection);
+        output.style.color = 'black';
+        output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
+                            <p>Player Selection: ${e.target.id}<p>
+                            <p>Computer Selection: ${computerSelection}<p>
+                            <h4>Round ${roundNumber} has finished.</h4>
+                            <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
+        roundNumber += 1;
+        if (roundNumber > roundsQuantity){
+            getFinalScore();
+            roundNumber = 1;
+            playerScore = 0;
+            computerScore = 0;
         }
     }
+    function getPlayerChoicePaper(e){
+        playerSelection = e.target.id;
+        computerSelection = getComputerChoice();
+        getWinner(playerSelection,computerSelection);
+        output.style.color = 'black';
+        output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
+                            <p>Player Selection: ${e.target.id}<p>
+                            <p>Computer Selection: ${computerSelection}<p>
+                            <h4>Round ${roundNumber} has finished.</h4>
+                            <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
+        roundNumber += 1;
+        if (roundNumber > roundsQuantity){
+            getFinalScore();
+            roundNumber = 1;
+            playerScore = 0;
+            computerScore = 0;
+        }
+    }
+    function getPlayerChoiceScissors(e){
+        playerSelection = e.target.id;
+        computerSelection = getComputerChoice();
+        getWinner(playerSelection,computerSelection);
+        output.style.color = 'black';
+        output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
+                            <p>Player Selection: ${e.target.id}<p>
+                            <p>Computer Selection: ${computerSelection}<p>
+                            <h4>Round ${roundNumber} has finished.</h4>
+                            <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
+        roundNumber += 1;
+        if (roundNumber > roundsQuantity){
+            getFinalScore();
+            roundNumber = 1;
+            playerScore = 0;
+            computerScore = 0;
+
+        }
+    }
+
+      
 }
 
-function playGame(){
-    //Instructions for the user
-    explainUserInstructions();
-
-    //Round 1
-    playerSelection = validatePlayer();
-    computerSelection = getComputerChoice();
-    playGameRound(playerSelection,computerSelection);
-    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
-    roundNumber += 1
-    
-    //Round 2
-    playerSelection = validatePlayer();
-    computerSelection = getComputerChoice();
-    playGameRound(playerSelection,computerSelection);
-    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
-    roundNumber += 1
-    
-    //Round 3
-    playerSelection = validatePlayer();
-    computerSelection = getComputerChoice();
-    playGameRound(playerSelection,computerSelection);
-    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
-    roundNumber += 1
-    
-    //Round 4
-    playerSelection = validatePlayer();
-    computerSelection = getComputerChoice();
-    playGameRound(playerSelection,computerSelection);
-    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
-    roundNumber += 1
-    
-    //Round 5
-    playerSelection = validatePlayer();
-    computerSelection = getComputerChoice();
-    playGameRound(playerSelection,computerSelection);
-    console.log(`ROUND ${roundNumber} has finished. The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}`);
-
-
-    getFinalScore();
-}
 
 function getFinalScore(){
     if (playerScore > computerScore){
-        console.info(`YOU WIN!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
+        //alert(`YOU WIN!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
+        output.style.color = 'green';
+        output.innerHTML=`<h1>YOU WIN</h1> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
     } else if (computerScore > playerScore){
-        console.info(`YOU LOSE!..... The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}`);
+        //alert(`YOU LOSE!..... The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}`);
+        output.style.color = 'red';
+        output.innerHTML=`<h1>YOU LOSE</h1> <h3>The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}</h3>`;
     } else {
-        console.info(`WEIRD... IT'S A TIE!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
+        //alert(`WEIRD... IT'S A TIE!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
+        output.style.color = 'blue';
+        output.innerHTML=`<h1>WEIRD... IT'S A TIE</h1> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
     }
+    console.clear();
 }
 
 
@@ -142,4 +152,11 @@ function getFinalScore(){
 
 
 //Play the game (5 rounds)
-playGame();
+//playGame();
+
+//Instructions for the user
+explainUserInstructions();
+playRoundButton();
+
+
+
