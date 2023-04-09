@@ -1,3 +1,14 @@
 html{
-    background-color: orange;
+    background-color: #867070;
+}
+body{
+    color: #E4D0D0;
+}
+.player-choices{
+    background-color: #867b70;    
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.container-player-choices{
+    display: flex;
+    gap: 25px;
 }

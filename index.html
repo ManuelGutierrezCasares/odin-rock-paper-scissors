@@ -9,14 +9,23 @@
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
+    <img src="./images/cartoon-rock-paper-scissors.jpg" alt="Rock Paper Scissors" width="300px" height="auto">
     <h3>You will be playing 5 rounds each game</h3>
-    <h3>Please select a button with your choice for the current round</h3>
+    <h3>Please select the image to play the next round</h3>
     <br>
-    <button class="button" id="rock">Rock</button>
-    <button class="button" id="paper">Paper</button>
-    <button class="button" id="scissors">Scissors</button>
+    <div class="container-player-choices">
+        <img src="./images/rock.png" alt="rock" class="player-choices" id="rock">
+        <img src="./images/paper.png" alt="paper" class="player-choices" id="paper">
+        <img src="./images/scissors.png" alt="scissors" class="player-choices" id="scissors">
+        
+        <!--<button class="button" id="rock">Rock</button>
+        <button class="button" id="paper">Paper</button>
+        <button class="button" id="scissors">Scissors</button>-->
+    </div>
     <br>
     <div id="output"></div>
+    <br>
+    <button id="reset">Reset</button>
 
     <script src="game.js"></script>
 </body>

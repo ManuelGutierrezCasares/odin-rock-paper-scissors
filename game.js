@@ -55,19 +55,23 @@ function playRoundButton(){
     const paper = document.querySelector('#paper');
     const scissors = document.querySelector('#scissors');
     const output = document.querySelector('#output');
+    const reset = document.querySelector('#reset');
 
     rock.addEventListener('click',getPlayerChoiceRock);
     paper.addEventListener('click',getPlayerChoicePaper);
     scissors.addEventListener('click',getPlayerChoiceScissors);
+    reset.addEventListener('click',resetGame)
+
 
     function getPlayerChoiceRock(e){
         playerSelection = e.target.id;
         computerSelection = getComputerChoice();
         getWinner(playerSelection,computerSelection);
-        output.style.color = 'black';
+        output.style.display='block';
+        output.style.color = '#E4D0D0';
         output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
-                            <p>Player Selection: ${e.target.id}<p>
-                            <p>Computer Selection: ${computerSelection}<p>
+                            <ul><li>Player Selection: ${e.target.id}</li>
+                            <li>Computer Selection: ${computerSelection}</li></ul>
                             <h4>Round ${roundNumber} has finished.</h4>
                             <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
         roundNumber += 1;
@@ -82,10 +86,11 @@ function playRoundButton(){
         playerSelection = e.target.id;
         computerSelection = getComputerChoice();
         getWinner(playerSelection,computerSelection);
-        output.style.color = 'black';
+        output.style.display='block';
+        output.style.color = '#E4D0D0';
         output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
-                            <p>Player Selection: ${e.target.id}<p>
-                            <p>Computer Selection: ${computerSelection}<p>
+                            <ul><li>Player Selection: ${e.target.id}</li>
+                            <li>Computer Selection: ${computerSelection}</li></ul>
                             <h4>Round ${roundNumber} has finished.</h4>
                             <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
         roundNumber += 1;
@@ -100,10 +105,11 @@ function playRoundButton(){
         playerSelection = e.target.id;
         computerSelection = getComputerChoice();
         getWinner(playerSelection,computerSelection);
-        output.style.color = 'black';
+        output.style.display='block';
+        output.style.color = '#E4D0D0';
         output.innerHTML=`  <h3>Round ${roundNumber}/${roundsQuantity}</h3>
-                            <p>Player Selection: ${e.target.id}<p>
-                            <p>Computer Selection: ${computerSelection}<p>
+                            <ul><li>Player Selection: ${e.target.id}</li>
+                            <li>Computer Selection: ${computerSelection}</li></ul>
                             <h4>Round ${roundNumber} has finished.</h4>
                             <h4>The Overall Score is: Player: ${playerScore} - Computer: ${computerScore}</h4>`;
         roundNumber += 1;
@@ -115,6 +121,13 @@ function playRoundButton(){
 
         }
     }
+    function resetGame(e){
+        output.style.display='none';    
+        roundNumber = 1;
+        playerScore = 0;
+        computerScore = 0;
+        console.clear;
+    }
 
       
 }
@@ -124,15 +137,15 @@ function getFinalScore(){
     if (playerScore > computerScore){
         //alert(`YOU WIN!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
         output.style.color = 'green';
-        output.innerHTML=`<h1>YOU WIN</h1> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
+        output.innerHTML=`<h2>YOU WIN</h2> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
     } else if (computerScore > playerScore){
         //alert(`YOU LOSE!..... The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}`);
         output.style.color = 'red';
-        output.innerHTML=`<h1>YOU LOSE</h1> <h3>The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}</h3>`;
+        output.innerHTML=`<h2>YOU LOSE</h2> <h3>The final score is COMPUTER: ${computerScore} - PLAYER: ${playerScore}</h3>`;
     } else {
         //alert(`WEIRD... IT'S A TIE!..... The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}`);
         output.style.color = 'blue';
-        output.innerHTML=`<h1>WEIRD... IT'S A TIE</h1> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
+        output.innerHTML=`<h2>WEIRD... IT'S A TIE</h2> <h3>The final score is PLAYER: ${playerScore} - COMPUTER: ${computerScore}</h3>`;
     }
     console.clear();
 }
