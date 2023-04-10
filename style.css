@@ -8,6 +8,16 @@ body{
     background-color: #867b70;    
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
+.player-choices:hover{
+    background-color: rgba(134, 123, 112, 0.5);
+    cursor:pointer;
+}
+.player-choices:active {
+    background-color: #867b70;
+    box-shadow: 0 5px rgb(0 0 0 / 0.2);
+    transform: translateY(4px);
+    cursor:pointer;
+  }
 .container-player-choices{
     display: flex;
     gap: 25px;
